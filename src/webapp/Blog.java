@@ -1,6 +1,6 @@
 package webapp;
 
-import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 
 /**
@@ -19,23 +20,19 @@ import java.io.IOException;
 @WebServlet(name = "Blog")
 public class Blog extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/writepost.jsp").forward(
                 request, response);
-    
+
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
 
-       
-        String blogName = req.getParameter("blogName");
-    	Key blogKey = KeyFactory.createKey("Blog", blogName);
 
-    
-        String content = req.getParameter("content");
-        String title = req.getTitle("title");
+        String blogName = request.getParameter("blogName");
+        Key blogKey = KeyFactory.createKey("Blog", blogName);
+
+
+        String content = request.getParameter("content");
+        String title = request.getParameter("title");
         Date date = new Date();
 
         Entity entry = new Entity("Entry", blogKey);
@@ -44,8 +41,12 @@ public class Blog extends HttpServlet {
         entry.setProperty("content", content);
         entry.setProperty("title", title);
 
-      	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
-      	datastore.put(entry);
-      	resp.sendRedirect("/landing.jpg?blogName=" + blogName);
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        datastore.put(entry);
+        response.sendRedirect("/landing.jpg?blogName=" + blogName);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }
