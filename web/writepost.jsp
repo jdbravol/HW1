@@ -1,7 +1,8 @@
 <html>
-	<head>
+<!--	<head>
 	   <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 	</head>
+-->
 	<body>
 		<header>
 			<div class="logo"></div>
@@ -13,15 +14,26 @@
 			<div class="allPosts"></div>
 			<div class="subscribe"></div>
 		</section>
+
 		<section class="postWriter">
 			<form action="/sign" method="post">
-		  	  Title <br>
-		  	  <div><input type="text" name="title"></div> <br>
-		  	  Entry <br>
-		  	  <div><input type="text" name="entry"></div> <br>
-		      <div class="myButton"><input type="submit" value="Post"></div>
-		      <div class="myButton" value="Cancel"></div>
-	      	  <input type="hidden" name="blog" value="${fn:escapeXml(blog)}"/>
+                <td align="right"> <b> Title: </b> </td>
+                <div>
+                    <input type="text" name="title" size="75">
+                </div>
+
+                <td align="right"> <b> Entry: </b> </td>
+                <div>
+                    <textarea name="title" cols="75" rows="7"></textarea>
+                </div>
+                <td></td>
+                <div>
+                    <input type="submit"  value = "post">
+                </div>
+                <td></td>
+                <td>
+                    <input type="submit" value="Cancel">
+                </td>
     	  </form>
 		</section>
 	</body>
