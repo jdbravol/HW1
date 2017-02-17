@@ -19,5 +19,27 @@ public class Blog extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/writepost.jsp").forward(
                 request, response);
+    
+        UserService userService = UserServiceFactory.getUserService();
+        User user = userService.getCurrentUser();
+
+       
+        String blogName = req.getParameter("blogName");
+    	Key blogKey = KeyFactory.createKey("Blog", blogName);
+
+    
+        String content = req.getParameter("content");
+        String title = req.getTitle("title");
+        Date date = new Date();
+
+        Entity entry = new Entity("Entry", blogKey);
+        entry.setProperty("user", user);
+        entry.setProperty("date", date);
+        entry.setProperty("content", content);
+        entry.setProperty("title", title);
+
+      	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
+      	datastore.put(entry);
+      	resp.sendRedirect("/landing.jpg?blogName=" + blogName);
     }
 }
