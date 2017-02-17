@@ -34,6 +34,7 @@
                 <td>
                     <input type="submit" value="Cancel">
                 </td>
+                <input type="hidden" name="blogName" value="default"/>
     	  </form>
 		</section>
 	</body>
