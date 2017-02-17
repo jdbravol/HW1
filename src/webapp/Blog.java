@@ -20,8 +20,7 @@ import java.util.Date;
 @WebServlet(name = "Blog")
 public class Blog extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/writepost.jsp").forward(
-                request, response);
+        request.getRequestDispatcher("/writepost.jsp").forward(request, response);
 
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();

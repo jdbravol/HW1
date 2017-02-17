@@ -1,4 +1,4 @@
-package guestbook;
+package webapp;
 
 import java.util.Date;
 import com.google.appengine.api.users.User;
