@@ -22,8 +22,28 @@
         <servlet-class>webapp.Blog</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>subscribe</servlet-name>
+        <servlet-class>webapp.Subscribe</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>unsubscribe</servlet-name>
+        <servlet-class>webapp.Unsubscribe</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>blog</servlet-name>
         <url-pattern>/blog</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>unsubscribe</servlet-name>
+        <url-pattern>/unsubscribe</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>subsribe</servlet-name>
+        <url-pattern>/subscribe</url-pattern>
     </servlet-mapping>
 </web-app>

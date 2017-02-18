@@ -1,13 +1,10 @@
-{
-    display:flex;
-}
-
-
-{
+*{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
+	display:flex;
+
 }
 .button {
 	-moz-box-shadow:inset 0px 1px 0px 0px #54a3f7;
@@ -47,4 +44,12 @@
 .button:active {
 	position:relative;
 	top:1px;
+}
+
+.png {
+	width:30%;
+}
+
+.title{
+	width: 70%;
 }

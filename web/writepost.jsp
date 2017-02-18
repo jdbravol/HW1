@@ -6,7 +6,7 @@
 
         <header>
             <div class="logo"></div>
-            <img class="png" src="images/logo.png">
+            <img class="png" src="/images/logo.png">
             <div class="title"></div>
             <h1>The Blog</h1>
         </header>
@@ -22,6 +22,9 @@
             </div>
             <div class="subscribe">
                 <a href="/subcribe" class="button">Subscribe</a>
+            </div>
+            <div class="unsubscribe">
+                <a href="/unsubcribe" class="button">Unsubscribe</a>
             </div>
         </section>
 

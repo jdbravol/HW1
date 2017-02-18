@@ -16,7 +16,7 @@
 <body>
     <header>
     <div class="logo"></div>
-        <img class="png" src="images/logo.png">
+        <img class="png" src="/images/logo.png">
     <div class="title"></div>
         <h1>The Blog</h1>
     </header>
