@@ -56,7 +56,7 @@
     %>
     <a href="/subcribe" class="button">Subscribe</a>
     <%
-        }
+        };
     %>
 
 </section>
