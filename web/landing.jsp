@@ -48,11 +48,22 @@
     <a href="/posts.jsp" class="button">Posts</a>
 
     <%
+        UserEntity thisUser = new UserEntity(user);
         ObjectifyService.register(UserEntity.class);
-        List<UserEntity>
+        List<UserEntity> subscribed = ObjectifyService.ofy().load().type(UserEntity.class).list();
+        if (subscribed.contains(thisUser)){
+
     %>
     <a href="/unsubscribe" class="button">Unsubscribe</a>
+    <%
+        }
+        else
+        {
+    %>
     <a href="/subscribe" class="button">Subscribe</a>
+    <%
+        }
+    %>
 
 </section>
 
