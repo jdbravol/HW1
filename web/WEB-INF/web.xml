@@ -43,7 +43,18 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>subsribe</servlet-name>
+        <servlet-name>subscribe</servlet-name>
         <url-pattern>/subscribe</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>email</servlet-name>
+        <servlet-class>webapp.Email</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>email</servlet-name>
+        <url-pattern>/email</url-pattern>
+    </servlet-mapping>
+
 </web-app>

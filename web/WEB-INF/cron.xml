@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+    <cron>
+        <url>/email</url>
+        <description>Sends an email to subscribed users with the newer posts of the website </description>
+        <schedule>00 5 * * *</schedule>
+    </cron>
+</cronentries>

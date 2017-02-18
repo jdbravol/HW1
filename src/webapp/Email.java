@@ -1,7 +1,9 @@
 package webapp;
 
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.ObjectifyService;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +16,13 @@ import javax.servlet.http.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
+import static com.googlecode.objectify.ObjectifyService.ofy;
 
-public class Email {
+public class Email extends HttpServlet{
 
-    public void SendEmail() {
+    public void sendEmail() {
 
-        String message = "New Posts have been added to TheBlog";
+        String message = "New Posts have been added to The Blog";
         ObjectifyService.register(String.class);
         List<String> emails = ObjectifyService.ofy().load().type(String.class).list();
         if (emails.isEmpty()) {
@@ -53,6 +56,21 @@ public class Email {
                 e.printStackTrace();
             }
         }
+    }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            sendEmail();
+        }
+        catch (Exception ex) {
+        }
+
+    }
+
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        doGet(req, resp);
     }
 }
 
