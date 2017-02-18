@@ -29,6 +29,7 @@ public class Blog extends HttpServlet {
 
         Entry entry = new Entry(user, content, title);
 
+        ObjectifyService.register(Entry.class);
         ofy().save().entity(entry).now();
 
         response.sendRedirect("/landing.jsp?entry=" + entry);
