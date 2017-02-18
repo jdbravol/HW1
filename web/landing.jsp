@@ -31,15 +31,15 @@
 
 <%
 
-    String guestbookName = request.getParameter("guestbookName");
+    String blogName = request.getParameter("blogName");
 
-    if (guestbookName == null) {
+    if (blogName == null) {
 
-        guestbookName = "default";
+        blogName = "default";
 
     }
 
-    pageContext.setAttribute("guestbookName", guestbookName);
+    pageContext.setAttribute("blogName", blogName);
 
     UserService userService = UserServiceFactory.getUserService();
 
@@ -65,7 +65,7 @@
 
     <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
 
-    to include your name with greetings you post.</p>
+    to post in your name.</p>
 
 <%
 
@@ -87,7 +87,7 @@
 
 %>
 
-<p>Guestbook '${fn:escapeXml(guestbookName)}' has no messages.</p>
+<p>The Blog '${fn:escapeXml(guestbookName)}' has no entries.</p>
 
 <%
 
@@ -95,7 +95,7 @@
 
 %>
 
-<p>Messages in Guestbook '${fn:escapeXml(guestbookName)}'.</p>
+<p>Entries in The Blog '${fn:escapeXml(guestbookName)}'.</p>
 
 <%
 
