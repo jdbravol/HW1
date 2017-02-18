@@ -29,7 +29,6 @@ public class Blog extends HttpServlet {
         }
         Key blogKey = KeyFactory.createKey("Blog", blogName);
 
-
         String content = request.getParameter("content");
         String title = request.getParameter("title");
         Date date = new Date();

@@ -12,7 +12,9 @@ public class Entry implements Comparable<Entry> {
 	String content; 
 	Date date; 
 	String title; 
-	
+
+	private Entry(){}
+
 	public Entry(User user, String content, String title){
 		this.user = user; 
 		this.content = content; 
