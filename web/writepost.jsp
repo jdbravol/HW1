@@ -16,7 +16,7 @@
 		</section>
 
 		<section class="postWriter">
-			<form action="/sign" method="post">
+            <form action="/Blog" method="post">
                 <td align="right"> <b> Title: </b> </td>
                 <div>
                     <input type="text" name="title" size="75">
@@ -24,7 +24,7 @@
 
                 <td align="right"> <b> Entry: </b> </td>
                 <div>
-                    <textarea name="title" cols="75" rows="7"></textarea>
+                    <textarea name="content" cols="75" rows="7"></textarea>
                 </div>
                 <td></td>
                 <div>

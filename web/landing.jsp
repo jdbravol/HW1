@@ -127,7 +127,7 @@
 
 
 
-<form action="/ofysign" method="post">
+<form action="/blog" method="post">
 
     <div><input type="submit" name="newPost" value="Create a New Post" ></div>
 
