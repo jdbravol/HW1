@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 
+import static com.googlecode.objectify.ObjectifyService.ofy;
+
 
 @WebServlet(name = "Blog")
 public class Blog extends HttpServlet {
@@ -21,28 +23,17 @@ public class Blog extends HttpServlet {
         //Username
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
-
-
-        String blogName = request.getParameter("blogName");
-        if (blogName == null){
-            blogName = "default";
-        }
-        Key blogKey = KeyFactory.createKey("Blog", blogName);
-
         String content = request.getParameter("content");
         String title = request.getParameter("title");
         Date date = new Date();
 
+        Entry entry = new Entry(user, content, title);
 
-        Entity entry = new Entity("Entry", blogKey);
-        entry.setProperty("user", user.getNickname());
-        entry.setProperty("date", date);
-        entry.setProperty("content", content);
-        entry.setProperty("title", title);
+        ofy().save().entity(entry).now();
 
-        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        datastore.put(entry);
-        response.sendRedirect("/landing.jpg?blogName=" + blogName);
+        response.sendRedirect("/landing.jsp?entry=" + entry);
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

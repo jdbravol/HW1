@@ -14,13 +14,9 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 
-public class Email extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-    }
+public class Email {
+    public void SendEmail(){
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/landing.jsp").forward(request, response);
     }
 }
 
