@@ -14,6 +14,7 @@
             <h1>The Blog</h1>
         </header>
         </section>
+        <section class="menu">
         <%
             String blogName = request.getParameter("blogName");
             if (blogName == null) {
@@ -26,14 +27,20 @@
 
             if (user != null) {
                 pageContext.setAttribute("user", user);
-            }
         %>
-        <section class="menu">
+            <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="button">Logout</a>
+            <%
+            }
+            else{
+            %>
             <a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="button">Login</a>
+            <%
+                }
+            %>
             <a href="/blog" class="button">Write</a>
             <a href="/posts.jsp" class="button">Posts</a>
-            <a href="/unsubcribe" class="button">Unsubscribe</a>
-            <a href="/Subcribe" class="button">Subscribe</a>
+            <a href="/unsubscribe" class="button">Unsubscribe</a>
+            <a href="/Subscribe" class="button">Subscribe</a>
         </section>
 
 		<section class="postWriter">

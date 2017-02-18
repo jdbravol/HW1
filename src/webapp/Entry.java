@@ -37,6 +37,7 @@ public class Entry implements Comparable<Entry> {
 	 public String getTitle(){
 		 return title; 
 	 }
+
 	@Override
     public int compareTo(Entry other) {
         if (date.after(other.date)) {
