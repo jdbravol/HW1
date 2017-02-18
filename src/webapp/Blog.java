@@ -14,19 +14,19 @@ import java.io.IOException;
 import java.util.Date;
 
 
-/**
- * Created by juanbravo on 2/17/17.
- */
 @WebServlet(name = "Blog")
 public class Blog extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/writepost.jsp").forward(request, response);
 
+        //Username
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
 
 
         String blogName = request.getParameter("blogName");
+        if (blogName == null){
+            blogName = "default";
+        }
         Key blogKey = KeyFactory.createKey("Blog", blogName);
 
 
@@ -34,8 +34,9 @@ public class Blog extends HttpServlet {
         String title = request.getParameter("title");
         Date date = new Date();
 
+
         Entity entry = new Entity("Entry", blogKey);
-        entry.setProperty("user", user);
+        entry.setProperty("user", user.getNickname());
         entry.setProperty("date", date);
         entry.setProperty("content", content);
         entry.setProperty("title", title);
