@@ -18,9 +18,9 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 
-public class Email {
+public class Email extends HttpServlet {
 
-    public void SendEmail() {
+    public void sendEmail() {
 
         ObjectifyService.register(Entry.class);
         List<Entry> blogPosts = ObjectifyService.ofy().load().type(Entry.class).list();
