@@ -3,6 +3,7 @@
     <cron>
         <url>/email</url>
         <description>Sends an email to subscribed users with the newer posts of the website </description>
-        <schedule>00 5 * * *</schedule>
+        <schedule>every day 17:00</schedule>
+        <timezone>America/Chicago</timezone>
     </cron>
 </cronentries>

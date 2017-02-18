@@ -12,8 +12,7 @@ import java.io.IOException;
 
 public class login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserService userService = UserServiceFactory.getUserService();
-        userService.createLoginURL(request.getRequestURI());
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -19,15 +19,9 @@
     <img class="png" src="/images/logo.png">
     <h1>The Blog</h1>
 </header>
-<section class="menu">
-    <a href="/login" class="button">Login</a>
-    <a href="/blog" class="button">Write</a>
-    <a href="/posts.jsp" class="button">Posts</a>
-    <a href="/subcribe" class="button">Subscribe</a>
-    <a href="/unsubcribe" class="button">Unsubscribe</a>
-</section>
-    <%
 
+<section class="menu">
+<%
     String blogName = request.getParameter("blogName");
     if (blogName == null) {
         blogName = "default";
@@ -38,20 +32,35 @@
     User user = userService.getCurrentUser();
 
     if (user != null) {
-        pageContext.setAttribute("user", user);
-%>
 
-<p>Hello, ${fn:escapeXml(user.nickname)}! (You can
-    <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-<%
-} else {
 %>
-<p>Hello!
-    <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-    to post in your name.</p>
-<%
-    }
-%>
+    <a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="button">Login</a>
+    <%
+        }
+        else{
+    %>
+    <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="button">Logout</a>
+    <%
+        }
+    %>
+    <a href="/blog" class="button">Write</a>
+    <a href="/posts.jsp" class="button">Posts</a>
+    <%
+        ObjectifyService.register(User.class);
+        List<User> usersSubcribed = ObjectifyService.ofy().load().type(User.class).list();
+        if(usersSubcribed.contains(user)){
+    %>
+    <a href="/unsubcribe" class="button">Unsubscribe</a>
+    <%
+        }else{
+    %>
+    <a href="/subcribe" class="button">Subscribe</a>
+    <%
+        }
+    %>
+
+</section>
+
 <%
 
     ObjectifyService.register(Entry.class);
@@ -64,7 +73,7 @@
 } else {
 %>
 
-<p> The last 5 Entries in The Blog are:  '${fn:escapeXml(guestbookName)}'.</p>
+<p> The last 5 Entries in The Blog are:  ${fn:escapeXml(guestbookName)} </p>
 
 <%
     int number;

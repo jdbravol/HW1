@@ -18,32 +18,9 @@
 <body>
 <header>
     <img class="png" src="/images/logo.png">
-    <h1>The Blog</h1>
+    <h1>The Blog </h1>
 </header>
-<section class="menu">
-    <a href="/login" class="button">Login</a>
-    <a href="/blog" class="button">Write</a>
-    <a href="/landing.jsp" class="button">5 first Posts</a>
-    <%
-        UserService userService = UserServiceFactory.getUserService();
-        User user = userService.getCurrentUser();
-        ObjectifyService.register(User.class);
-        List<User> users = ObjectifyService.ofy().load().type(User.class).list();
-        if (users.contains(user)){
-    %>
-    <a href="/unsubcribe" class="button">Unsubscribe</a>
-    <%
-    }
-    else{
-    %>
-    <a href="/Subcribe" class="button">Subscribe</a>
-    <%
-        }
-    %>
-</section>
-
 <%
-
     String blogName = request.getParameter("blogName");
     if (blogName == null) {
         blogName = "default";
@@ -55,19 +32,16 @@
 
     if (user != null) {
         pageContext.setAttribute("user", user);
-%>
-
-<p>Hello, ${fn:escapeXml(user.nickname)}! (You can
-    <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-<%
-} else {
-%>
-<p>Hello!
-    <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-    to post in your name.</p>
-<%
     }
 %>
+<section class="menu">
+    <a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="button">Login</a>
+    <a href="/blog" class="button">Write</a>
+    <a href="/landing.jsp" class="button">5 first Posts</a>
+    <a href="/unsubcribe" class="button">Unsubscribe</a>
+    <a href="/Subcribe" class="button">Subscribe</a>
+</section>
+
 <%
 
     ObjectifyService.register(Entry.class);

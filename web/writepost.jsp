@@ -8,31 +8,32 @@
 	   <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 	</head>
 	<body>
-
+        <section>
         <header>
-            <img class="png" src="/images/logo.png">
+            <img class="png" src="/images/logo.png" >
             <h1>The Blog</h1>
         </header>
-        <section class="menu">
-                <a href="/login" class="button">Login</a>
-                <a href="/blog" class="button">Write</a>
-                <a href="/posts.jsp" class="button">Posts</a>
-            <%
-                UserService userService = UserServiceFactory.getUserService();
-                User user = userService.getCurrentUser();
-                ObjectifyService.register(User.class);
-                List<User> users = ObjectifyService.ofy().load().type(User.class).list();
-                if (users.contains(user)){
-            %>
-            <a href="/unsubcribe" class="button">Unsubscribe</a>
-            <%
+        </section>
+        <%
+            String blogName = request.getParameter("blogName");
+            if (blogName == null) {
+                blogName = "default";
             }
-            else{
-            %>
+
+            pageContext.setAttribute("blogName", blogName);
+            UserService userService = UserServiceFactory.getUserService();
+            User user = userService.getCurrentUser();
+
+            if (user != null) {
+                pageContext.setAttribute("user", user);
+            }
+        %>
+        <section class="menu">
+            <a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="button">Login</a>
+            <a href="/blog" class="button">Write</a>
+            <a href="/posts.jsp" class="button">Posts</a>
+            <a href="/unsubcribe" class="button">Unsubscribe</a>
             <a href="/Subcribe" class="button">Subscribe</a>
-            <%
-                }
-            %>
         </section>
 
 		<section class="postWriter">
