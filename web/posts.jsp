@@ -24,8 +24,22 @@
     <a href="/login" class="button">Login</a>
     <a href="/blog" class="button">Write</a>
     <a href="/landing.jsp" class="button">5 first Posts</a>
-    <a href="/subcribe" class="button">Subscribe</a>
+    <%
+        UserService userService = UserServiceFactory.getUserService();
+        User user = userService.getCurrentUser();
+        ObjectifyService.register(User.class);
+        List<User> users = ObjectifyService.ofy().load().type(User.class).list();
+        if (users.contains(user)){
+    %>
     <a href="/unsubcribe" class="button">Unsubscribe</a>
+    <%
+    }
+    else{
+    %>
+    <a href="/Subcribe" class="button">Subscribe</a>
+    <%
+        }
+    %>
 </section>
 
 <%

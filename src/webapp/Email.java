@@ -1,5 +1,6 @@
 package webapp;
 
+import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Objectify;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -40,8 +41,8 @@ public class Email extends HttpServlet {
             }
         }
 
-        ObjectifyService.register(String.class);
-        List<String> emails = ObjectifyService.ofy().load().type(String.class).list();
+        ObjectifyService.register(User.class);
+        List<User> emails = ObjectifyService.ofy().load().type(User.class).list();
         if (emails.isEmpty()) {
             return;
         } else {
@@ -60,8 +61,8 @@ public class Email extends HttpServlet {
             try {
                 mailMessage.setFrom(new InternetAddress("theblog461l@gmail.com"));
 
-                for (String email : emails) {
-                    mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
+                for (User email : emails) {
+                    mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(email.getEmail()));
                     mailMessage.setSubject("TheBlog Updates");
                     mailMessage.setContent(message, "text/html");
                     Transport transport = mailSession.getTransport("smtp");

@@ -1,3 +1,8 @@
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.googlecode.objectify.ObjectifyService" %>
+<%@ page import="java.util.List" %>
 <html>
 	<head>
 	   <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
@@ -12,8 +17,22 @@
                 <a href="/login" class="button">Login</a>
                 <a href="/blog" class="button">Write</a>
                 <a href="/posts.jsp" class="button">Posts</a>
-                <a href="/subcribe" class="button">Subscribe</a>
-                <a href="/unsubcribe" class="button">Unsubscribe</a>
+            <%
+                UserService userService = UserServiceFactory.getUserService();
+                User user = userService.getCurrentUser();
+                ObjectifyService.register(User.class);
+                List<User> users = ObjectifyService.ofy().load().type(User.class).list();
+                if (users.contains(user)){
+            %>
+            <a href="/unsubcribe" class="button">Unsubscribe</a>
+            <%
+            }
+            else{
+            %>
+            <a href="/Subcribe" class="button">Subscribe</a>
+            <%
+                }
+            %>
         </section>
 
 		<section class="postWriter">
