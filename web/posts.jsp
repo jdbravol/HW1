@@ -33,6 +33,9 @@
     <div class="subscribe">
         <a href="/subcribe" class="button">Subscribe</a>
     </div>
+    <div class="unsubscribe">
+        <a href="/unsubcribe" class="button">Unsubscribe</a>
+    </div>
 </section>
 </body>
 
