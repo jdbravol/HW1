@@ -19,6 +19,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 
+
 public class Email extends HttpServlet {
 
     public void sendEmail() {
@@ -47,6 +48,7 @@ public class Email extends HttpServlet {
             return;
         } else {
             Properties prop = System.getProperties();
+
             prop.put("mail.smtp.host", "smtp.gmail.com");
             prop.put("mail.smtp.auth", "true");
             prop.put("mail.smtp.port", "465");
