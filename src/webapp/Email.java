@@ -1,5 +1,6 @@
 package webapp;
 
+import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,10 @@ public class Email {
 
     public void SendEmail() {
 
-        String message = "New Posts have been added to TheBlog";
+        ObjectifyService.register(Entry.class);
+        List<Entry> blogPosts = ObjectifyService.ofy().load().type(Entry.class).list();
+        String message = "The latest Posts that have been added to TheBlog are: \n";
+        Calendar date = new GregorianCalendar();
         ObjectifyService.register(String.class);
         List<String> emails = ObjectifyService.ofy().load().type(String.class).list();
         if (emails.isEmpty()) {

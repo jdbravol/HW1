@@ -27,23 +27,37 @@
         <servlet-class>webapp.Subscribe</servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>subscribe</servlet-name>
+        <url-pattern>/subscribe</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>unsubscribe</servlet-name>
         <servlet-class>webapp.Unsubscribe</servlet-class>
     </servlet>
-
-    <servlet-mapping>
-        <servlet-name>blog</servlet-name>
-        <url-pattern>/blog</url-pattern>
-    </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>unsubscribe</servlet-name>
         <url-pattern>/unsubscribe</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>subsribe</servlet-name>
-        <url-pattern>/subscribe</url-pattern>
+        <servlet-name>blog</servlet-name>
+        <url-pattern>/blog</url-pattern>
     </servlet-mapping>
+    <filter>
+
+        <filter-name>ObjectifyFilter</filter-name>
+
+        <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+
+    </filter>
+
+    <filter-mapping>
+
+        <filter-name>ObjectifyFilter</filter-name>
+
+        <url-pattern>/*</url-pattern>
+
+    </filter-mapping>
+
 </web-app>

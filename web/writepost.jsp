@@ -17,8 +17,8 @@
         </section>
 
 		<section class="postWriter">
-            <form action="/Blog" method="post">
-                <td align="right"> <b> Title: </b> </td>
+            <form action="/blog" method="post">
+            <td align="right"> <b> Title: </b> </td>
                 <div>
                     <input type="text" name="title" size="75">
                 </div>
@@ -28,8 +28,10 @@
                 </div>
                 <td></td>
                 <div>
-                    <input type="submit"  value = "post">
+                    <input type="submit" value = "post">
                 </div>
+            </form>
+
                 <td></td>
                 <input type="hidden" name="blogName" value="default"/>
     	  </form>
