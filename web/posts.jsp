@@ -98,13 +98,6 @@
         }
     }
 %>
-<form action="/blog" method="get">
-    <div><input type="submit" name="newPost" value="Create a New Post" ></div>
-
-</form>
-
-
-
 </body>
 
 
