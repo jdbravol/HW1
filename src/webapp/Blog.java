@@ -29,7 +29,7 @@ public class Blog extends HttpServlet {
         ObjectifyService.register(Entry.class);
         ofy().save().entity(entry).now();
 
-        response.sendRedirect("/posts.jsp");
+        response.sendRedirect("/landing.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -23,7 +23,7 @@
 <section class="menu">
     <a href="/login" class="button">Login</a>
     <a href="/blog" class="button">Write</a>
-    <a href="/posts" class="button">Posts</a>
+    <a href="/landing.jsp" class="button">5 first Posts</a>
     <a href="/subcribe" class="button">Subscribe</a>
     <a href="/unsubcribe" class="button">Unsubscribe</a>
 </section>
