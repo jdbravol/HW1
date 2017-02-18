@@ -13,4 +13,8 @@ public class UserEntity{
     public User getUser(){
         return u;
     }
+
+    public UserEntity(User u){
+        this.u = u;
+    }
 }

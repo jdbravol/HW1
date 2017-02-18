@@ -32,8 +32,8 @@ public class Subscribe extends HttpServlet {
 
         //Add user to objectify
         else{
-            ObjectifyService.register(User.class);
-            ofy().save().entity(user).now();
+            ObjectifyService.register(UserEntity.class);
+            ofy().save().entity(new UserEntity(user)).now();
             response.sendRedirect("/landing.jsp");
         }
 
@@ -41,6 +41,8 @@ public class Subscribe extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/landing.jsp").forward(request, response);
+
         //Username
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
@@ -52,8 +54,8 @@ public class Subscribe extends HttpServlet {
 
         //Add user to objectify
         else{
-            ObjectifyService.register(User.class);
-            ofy().save().entity(user).now();
+            ObjectifyService.register(UserEntity.class);
+            ofy().save().entity(new UserEntity(user)).now();
             response.sendRedirect("/landing.jsp");
         }
 
