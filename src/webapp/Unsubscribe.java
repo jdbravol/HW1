@@ -13,7 +13,17 @@ import java.io.IOException;
 
 public class Unsubscribe extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+        //Username
+        UserService userService = UserServiceFactory.getUserService();
+        User user = userService.getCurrentUser();
+
+        //if user is not null
+        if(user!= null){
+            ObjectifyService.register(User.class);
+            ObjectifyService.ofy().delete().entity(user).now();
+        }
+
+        response.sendRedirect("/landing.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

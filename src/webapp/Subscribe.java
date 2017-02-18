@@ -37,11 +37,27 @@ public class Subscribe extends HttpServlet {
             response.sendRedirect("/landing.jsp");
         }
 
-
+        response.sendRedirect("/landing.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Username
+        UserService userService = UserServiceFactory.getUserService();
+        User user = userService.getCurrentUser();
 
+        //If user doesn' exist, make him log in
+        if(user == null){
+            response.sendRedirect("/landing.jsp");
+        }
+
+        //Add user to objectify
+        else{
+            ObjectifyService.register(User.class);
+            ofy().save().entity(user).now();
+            response.sendRedirect("/landing.jsp");
+        }
+
+        response.sendRedirect("/landing.jsp");
     }
 }
 
