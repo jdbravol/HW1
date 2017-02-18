@@ -1,5 +1,6 @@
 package webapp;
 
+import com.googlecode.objectify.Objectify;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -16,13 +17,15 @@ import javax.servlet.http.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
-import static com.googlecode.objectify.ObjectifyService.ofy;
 
-public class Email extends HttpServlet{
+public class Email {
 
-    public void sendEmail() {
+    public void SendEmail() {
 
-        String message = "New Posts have been added to The Blog";
+        ObjectifyService.register(Entry.class);
+        List<Entry> blogPosts = ObjectifyService.ofy().load().type(Entry.class).list();
+        String message = "The latest Posts that have been added to TheBlog are: \n";
+        Calendar date = new GregorianCalendar();
         ObjectifyService.register(String.class);
         List<String> emails = ObjectifyService.ofy().load().type(String.class).list();
         if (emails.isEmpty()) {

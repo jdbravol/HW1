@@ -23,16 +23,13 @@ public class Blog extends HttpServlet {
         User user = userService.getCurrentUser();
         String content = request.getParameter("content");
         String title = request.getParameter("title");
-        Date date = new Date();
 
         Entry entry = new Entry(user, content, title);
 
         ObjectifyService.register(Entry.class);
         ofy().save().entity(entry).now();
 
-        response.sendRedirect("/landing.jsp?entry=" + entry);
-
-
+        response.sendRedirect("/posts.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
