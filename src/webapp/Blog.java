@@ -1,10 +1,10 @@
 package webapp;
 
-import com.google.appengine.api.datastore.*;
-import com.google.objectify.*;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.googlecode.objectify.ObjectifyService;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +15,7 @@ import java.util.Date;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 
+@WebServlet(name = "Blog")
 public class Blog extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -36,6 +37,6 @@ public class Blog extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("/writepost.jsp").forward(request, response);
     }
 }
