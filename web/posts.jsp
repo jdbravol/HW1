@@ -14,12 +14,12 @@
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 </head>
 <body>
-<header>
+    <header>
     <div class="logo"></div>
-    <img class="png" src="images/logo.png">
+        <img class="png" src="images/logo.png">
     <div class="title"></div>
-    <h1>The Blog</h1>
-</header>
+        <h1>The Blog</h1>
+    </header>
 <section class="menu">
     <div class="login">
         <a href="/login" class="button">Login</a>
