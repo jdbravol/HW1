@@ -15,7 +15,6 @@ import java.util.Date;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 
-@WebServlet(name = "Blog")
 public class Blog extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
