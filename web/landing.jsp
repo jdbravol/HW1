@@ -15,27 +15,16 @@
 </head>
 <body>
 <header>
-    <div class="logo"></div>
     <img class="png" src="/images/logo.png">
-    <div class="title"></div>
     <h1>The Blog</h1>
 </header>
 <section class="menu">
-    <div class="login">
-        <a href="/login" class="button">Login</a>
-    </div>
-    <div class="make">
-        <a href="/blog" class="button">Write</a>
-    </div>
-    <div class="allPosts">
-        <a href="/posts" class="button">Posts</a>
-    </div>
-    <div class="subscribe">
-        <a href="/subcribe" class="button">Subscribe</a>
-    </div>
-    <div class="unsubscribe">
-        <a href="/unsubcribe" class="button">Unsubscribe</a>
-    </div>
+    <a href="/login" class="button">Login</a>
+    <a href="/blog" class="button">Write</a>
+    <a href="/posts" class="button">Posts</a>
+    <a href="/subcribe" class="button">Subscribe</a>
+    <a href="/unsubcribe" class="button">Unsubscribe</a>
+</section>
     <%
 
         String blogName = request.getParameter("blogName");
@@ -94,8 +83,6 @@
             }
         }
     %>
-</section>
-
 </body>
 
 </html>
