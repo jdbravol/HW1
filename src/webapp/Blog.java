@@ -24,6 +24,10 @@ public class Blog extends HttpServlet {
         String content = request.getParameter("content");
         String title = request.getParameter("title");
 
+        if(content.equals("") || title.equals("")){
+            response.sendRedirect("/landing.jsp");
+        }
+
         Entry entry = new Entry(user, content, title);
 
         ObjectifyService.register(Entry.class);
