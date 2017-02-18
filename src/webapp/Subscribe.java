@@ -7,14 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.io.IOException;
 import java.util.*;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 public class Subscribe extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/landing.jsp").forward(request, response);
 
         //Username
@@ -33,6 +32,10 @@ public class Subscribe extends HttpServlet {
             response.sendRedirect("/landing.jsp");
         }
 
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }
