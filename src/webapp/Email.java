@@ -23,7 +23,21 @@ public class Email {
         ObjectifyService.register(Entry.class);
         List<Entry> blogPosts = ObjectifyService.ofy().load().type(Entry.class).list();
         String message = "The latest Posts that have been added to TheBlog are: \n";
-        Calendar date = new GregorianCalendar();
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int day = cal.get(Calendar.DATE);
+        for(Entry entry: blogPosts){
+            Date postDate = entry.date;
+            Calendar cal2 = Calendar.getInstance();
+            cal2.setTime(postDate);
+            if (cal.get(Calendar.DATE) == cal2.get(Calendar.DATE)){
+                message = message.concat(entry.title + "\n");
+                message = message.concat(entry.content +"\n");
+                message = message.concat("---------------------------\n");
+            }
+        }
+
         ObjectifyService.register(String.class);
         List<String> emails = ObjectifyService.ofy().load().type(String.class).list();
         if (emails.isEmpty()) {
