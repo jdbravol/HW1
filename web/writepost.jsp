@@ -31,7 +31,6 @@
                 <div>
                     <input type="text" name="title" size="75">
                 </div>
-
                 <td align="right"> <b> Entry: </b> </td>
                 <div>
                     <textarea name="content" cols="75" rows="7"></textarea>
